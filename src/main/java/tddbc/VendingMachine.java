@@ -3,34 +3,37 @@ package tddbc;
 class VendingMachine {
 
     public enum Drink {
-        OOLONG_TEA,
-        COFFEE,
-        COLA,
-        RED_BULL
-    };
+        OOLONG_TEA(100),
+        COFFEE(100),
+        COLA(100),
+        RED_BULL(200),
+        MONSTER(300);
 
-    int yen;
+        int price;
+
+        Drink(int price) {
+              this.price = price;
+        }
+
+        public int getPrice() {
+            return price;
+        }
+    }
+
+    private int deposit;
 
     Drink pushButton(Drink drink) {
-        if (has100Yen() && !drink.equals(Drink.RED_BULL)) {
-            return drink;
-        }
-        if (has200Yen() && drink.equals(Drink.RED_BULL)) {
+        if (getDeposit() == drink.getPrice()) {
             return drink;
         }
         return null;
     }
 
     void insertOneHundredYen() {
-        yen += 100;
+        deposit += 100;
     }
 
-    boolean has100Yen() {
-        return yen == 100;
+    int getDeposit() {
+        return deposit;
     }
-
-    boolean has200Yen() {
-        return yen == 200;
-    }
-
 }

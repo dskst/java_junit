@@ -19,14 +19,14 @@ public class VendingMachineTest {
     @Test
     public void 百円を払う(){
         machine.insertOneHundredYen();
-        Boolean has100yen = machine.has100Yen();
-        assertThat(has100yen, is(true));
+        int deposit = machine.getDeposit();
+        assertThat(deposit, is(100));
     }
 
     @Test
     public void 百円を払わない() {
-        Boolean has100yen = machine.has100Yen();
-        assertThat(has100yen, is(false));
+        int deposit = machine.getDeposit();
+        assertThat(deposit, is(0));
     }
 
     @Test
@@ -75,5 +75,14 @@ public class VendingMachineTest {
         machine.insertOneHundredYen();
         VendingMachine.Drink drink = machine.pushButton(VendingMachine.Drink.RED_BULL);
         assertThat(drink, nullValue());
+    }
+
+    @Test
+    public void 三百円払うとモンスターが出てくるボタン() {
+        machine.insertOneHundredYen();
+        machine.insertOneHundredYen();
+        machine.insertOneHundredYen();
+        VendingMachine.Drink drink = machine.pushButton(VendingMachine.Drink.MONSTER);
+        assertThat(drink, is(VendingMachine.Drink.MONSTER));
     }
 }
