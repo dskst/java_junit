@@ -61,4 +61,19 @@ public class VendingMachineTest {
         VendingMachine.Drink drink = machine.pushButton(VendingMachine.Drink.COFFEE);
         assertThat(drink, is(VendingMachine.Drink.COFFEE));
     }
+
+    @Test
+    public void 二百円払うとレッドブルが出てくるボタン() {
+        machine.insertOneHundredYen();
+        machine.insertOneHundredYen();
+        VendingMachine.Drink drink = machine.pushButton(VendingMachine.Drink.RED_BULL);
+        assertThat(drink, is(VendingMachine.Drink.RED_BULL));
+    }
+
+    @Test
+    public void 百円だとレッドブルは出てこないボタン() {
+        machine.insertOneHundredYen();
+        VendingMachine.Drink drink = machine.pushButton(VendingMachine.Drink.RED_BULL);
+        assertThat(drink, nullValue());
+    }
 }

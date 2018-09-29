@@ -5,24 +5,32 @@ class VendingMachine {
     public enum Drink {
         OOLONG_TEA,
         COFFEE,
-        COLA
+        COLA,
+        RED_BULL
     };
 
-    private boolean has100Yen = false;
+    int yen;
 
     Drink pushButton(Drink drink) {
-        if (!has100Yen) {
-            return null;
+        if (has100Yen() && !drink.equals(Drink.RED_BULL)) {
+            return drink;
         }
-
-        return drink;
+        if (has200Yen() && drink.equals(Drink.RED_BULL)) {
+            return drink;
+        }
+        return null;
     }
 
     void insertOneHundredYen() {
-        has100Yen = true;
+        yen += 100;
     }
 
-    Boolean has100Yen() {
-        return has100Yen;
+    boolean has100Yen() {
+        return yen == 100;
     }
+
+    boolean has200Yen() {
+        return yen == 200;
+    }
+
 }
