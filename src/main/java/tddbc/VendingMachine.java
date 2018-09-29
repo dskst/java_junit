@@ -1,14 +1,19 @@
 package tddbc;
 
 class VendingMachine {
+
+    public static enum Drink {
+        COLA
+    };
+
     private boolean has100Yen = false;
 
-    String pushColaButton() {
+    Drink pushButton(Drink drink) {
         if (!has100Yen) {
-            return "";
+            return null;
         }
 
-        return "コーラ";
+        return drink;
     }
 
     void insertOneHundredYen() {
