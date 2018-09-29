@@ -2,7 +2,9 @@ package tddbc;
 
 class VendingMachine {
 
-    public static enum Drink {
+    public enum Drink {
+        OOLONG_TEA,
+        COFFEE,
         COLA
     };
 
@@ -22,16 +24,5 @@ class VendingMachine {
 
     Boolean has100Yen() {
         return has100Yen;
-    }
-
-    public String pushOolongTeaButton() {
-        if (!has100Yen) {
-            return "";
-        }
-        return "烏龍茶";
-    }
-
-    public String pushCoffeeButton() {
-        return "コーヒー";
     }
 }

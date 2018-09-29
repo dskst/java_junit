@@ -45,19 +45,20 @@ public class VendingMachineTest {
     @Test
     public void 百円を払うと烏龍茶が出てくるボタン() {
         machine.insertOneHundredYen();
-        String drink = machine.pushOolongTeaButton();
-        assertThat(drink, is("烏龍茶"));
+        VendingMachine.Drink drink = machine.pushButton(VendingMachine.Drink.OOLONG_TEA);
+        assertThat(drink, is(VendingMachine.Drink.OOLONG_TEA));
     }
 
     @Test
     public void 百円払わないと烏龍茶が出ない() {
-        String drink = machine.pushOolongTeaButton();
-        assertThat(drink, is(""));
+        VendingMachine.Drink drink = machine.pushButton(VendingMachine.Drink.OOLONG_TEA);
+        assertThat(drink, nullValue());
     }
 
     @Test
     public void 百円を払うとコーヒーが出てくるボタン() {
-        String drink = machine.pushCoffeeButton();
-        assertThat(drink, is("コーヒー"));
+        machine.insertOneHundredYen();
+        VendingMachine.Drink drink = machine.pushButton(VendingMachine.Drink.COFFEE);
+        assertThat(drink, is(VendingMachine.Drink.COFFEE));
     }
 }
