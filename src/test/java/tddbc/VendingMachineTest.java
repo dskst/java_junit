@@ -53,4 +53,10 @@ public class VendingMachineTest {
         String drink = machine.pushOolongTeaButton();
         assertThat(drink, is(""));
     }
+
+    @Test
+    public void 百円を払うとコーヒーが出てくるボタン() {
+        String drink = machine.pushCoffeeButton();
+        assertThat(drink, is("コーヒー"));
+    }
 }

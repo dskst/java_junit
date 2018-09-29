@@ -25,4 +25,8 @@ class VendingMachine {
         }
         return "烏龍茶";
     }
+
+    public String pushCoffeeButton() {
+        return "コーヒー";
+    }
 }
