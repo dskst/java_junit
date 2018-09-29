@@ -36,4 +36,8 @@ class VendingMachine {
     int getDeposit() {
         return deposit;
     }
+
+    Drink isValid() {
+        return Drink.OOLONG_TEA;
+    }
 }
